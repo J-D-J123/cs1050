@@ -1,91 +1,78 @@
-/**
+/** 
 * Name: J-D-J123
-* Date: 8/27/2024 
-* File: (preLab) lab2.c 
-* Desc: print the values of A, B, C, D
-*   print the value of the sum of B and C
-*   print the value of the product of A and D. 
-*   print the value of the integer quotient of A divided by C. 
-*   Print the value of the integer remainder of C divided by D.
-*   Print the value of the quantity A times C divided (integer division) 
-*   the quantity B plus D. 
+* Date: 8/30/2024 
+* Class: CS 1050   
+* PLA:   Someone Special 
+* Desc: Print the values of both variables that were entered by the user.
+* • Print the value of the first variable times the second variable.
+* • Print the value of the first variable divided by the second variable.
+* • Print the value of the second variable minus 2, quantity times the first variable (e.g.: Imagine
+*  you named the first variable X and the second variable Y. If X is 3 and Y is 4 then Y minus 2
+*  quantity times X is 6 because Y minus 2 is 2 and 2 times 3 is 6).
+* • Print the values of both original variables again to show that they did not change.
 */
 
 #include <stdio.h> 
 
-int a; 
-int b; 
-int c; 
-int d; 
+int x; 
+int y; 
 
-void storeVariables(void); 
+void getInput(void);
 void printOut(void); 
 
 int main(void) {
-    storeVariables(); 
-    return 0; 
+    getInput(); 
 }
 
-void storeVariables(void) {
+void getInput(void) {
+    printf("| Enter two ints, seperated by spaces\n");
+    printf("| ");
 
-    printf("Enter 4 Integeres, seperated by spaces.\n");
+    if(scanf("%d %d", &x, &y) != 2) {
+        printf("Error Occured, not all input were ints, Try Again.\n");
 
-    if (scanf("%d %d %d %d", &a, &b, &c, &d) != 4) {
-        printf("Error Reading ints try again!");
-
-        // reset input (clears the input for the next input)
-        // fixes it so it does not go on forever 
+        // clear past input 
         while (getchar() != '\n');
+
+        getInput(); 
         
-        storeVariables(); 
     } else {
-        // call to printOut() which will print out the variables with math
         printOut(); 
     }
 }
 
 /**
-* the printOut(void) method does not return but is 
-*   used to test the var array of characters that 
-*   will be used to store into the variables after
-*   the user inputs them into the terminal. 
-*/
+ * the printOut method prints out all the equasions from the Desc
+ * Desc: Print the values of both variables that were entered by the user.
+ *  • Print the value of the first variable times the second variable.
+ *  • Print the value of the first variable divided by the second variable.
+ *  • Print the value of the second variable minus 2, quantity times the first variable (e.g.: Imagine
+ *      you named the first variable X and the second variable Y. If X is 3 and Y is 4 then Y minus 2
+ *      quantity times X is 6 because Y minus 2 is 2 and 2 times 3 is 6).
+ *  • Print the values of both original variables again to show that they did not change.
+ */
 void printOut(void) {
 
-    // uncomment to test! 
-    // printf("%d, ", a); 
-    // printf("%d, ", b);
-    // printf("%d, ", c);
-    // printf("%d, ", d);  
+    // print out what is stored in the x and y variables 
+    printf("| You have selected: X = %d, Y = %d\n", x, y);
 
-    /**
-    * print the values of A, B, C, D
-    * print the value of the sum of B and C
-    * print the value of the product of A and D. 
-    * print the value of the integer quotient of A divided by C. 
-    * Print the value of the integer remainder of C divided by D.
-    * Print the value of the quantity A times C divided (integer division) 
-    * the quantity B plus D. 
-    */ 
+    // print out x * y 
+    printf("| Times: %d * %d = %d\n", x, y, x*y);
 
-    printf("\n");
-    
-    // equasion 1 --> sorry i can't spell  
-    printf("Numbers: A = %d, B = %d, C = %d, D = %d\n", a, b, c, d);
+    // x / y 
+    printf("| Divided %d / %d = %d\n", x, y, x/y);
 
-    // equasion 2
-    printf("Sum of B and C: %d + %d = %d\n", b, c, b + c);
+    // (y - 2) * x 
+    printf("| (y-2) * x = (%d - 2) * %d = %d\n", y, x, (y-2) * x); 
 
-    // equasion 3
-    printf("Product of A and D: %d * %d = %d\n", a, d, a * d);
+    // orginial variables 
+    printf("| Orginal Variables: X = %d, Y = %d\n", x, y);
 
-    // equasion 4
-    printf("Sum of B and C: %d / %d = %d\n", a, c, a / c);
+    // honors extensions 1-2 
+    // #1 print the remainder of dividing the second variable by the first variable 
+    printf("| Remainder of %d %% %d = %d\n", y, x, y % x); 
 
-    // equasion 5
-    printf("Value of C mod by D: %d %% %d = %d\n", c, d, c % d);
+    // #2 print the remainder of dividing the first variable plus 3 by the second 
+    printf("| Remanider of %d %% %d = %d", (x + 3), y, (x+3) % y);
 
-    // equasion 6
-    printf("Value of A times C divided by B plus D: %d * %d / %d + %d = %d\n", a, c, b, d, (a * c)/(b + d));
-
-}
+} // end of lab2.c 
