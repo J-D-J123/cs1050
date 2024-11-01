@@ -1,5 +1,5 @@
 /** 
-* Name: Joseph Johnson 
+* Name: J-D-J123
 * Date: 8/30/2024 
 * Class: CS 1050   
 * Desc: Print the values of both variables that were entered by the user.
